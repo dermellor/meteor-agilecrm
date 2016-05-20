@@ -28,7 +28,7 @@ AutoForm.addFormType "insert_agilecrm", {
     agileCrmContact = formToAgileContact(@formId)
     _agile.create_contact(agileCrmContact, getResultObj(@))
 
-  validateForm: -> validateForm
+  validateForm: validateForm
 }
 
 AutoForm.addFormType "update_agilecrm", {
@@ -37,5 +37,5 @@ AutoForm.addFormType "update_agilecrm", {
     agileCrmContact = formToAgileContact(@formId)
     _agile.update_contact(agileCrmContact getResultObj(@))
 
-  validateForm: -> validateForm
+  validateForm: validateForm
 }
