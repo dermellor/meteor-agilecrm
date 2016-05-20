@@ -2,7 +2,7 @@ Package.describe({
     name: 'mellors:agilecrm',
     version: '0.0.1',
     // Brief, one-line summary of the package.
-    summary: '',
+    summary: 'Insert and update contacts to agilecrm with the help of simple-schema and autoform',
     // URL to the Git repository containing the source code for this package.
     git: '',
     // By default, Meteor will default to using README.md for documentation.
