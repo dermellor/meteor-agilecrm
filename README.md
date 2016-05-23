@@ -32,7 +32,7 @@ Now you can use the schema with autoform. By using the the type "insert_agilecrm
 
 ```
 <template name="hello">
-    {{> quickForm schema="mySchema" id="newAgileCrmContact" type="insert_agilecrm"}}
+    {{> quickForm schema="mySchema" id="newAgileCrmContact" type="insert_agilecrm" agiletags="tag1, tags"}}
 </template>
 {{> agileCrmMessage formId="newAgileCrmContact" successMessage="Thank you" errorMessage="That did not work :("}}
 ```

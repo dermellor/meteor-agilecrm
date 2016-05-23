@@ -8,12 +8,12 @@ formToAgileContact = (formId) ->
   formValues = AutoForm.getFormValues(formId)
   schema = AutoForm.getFormSchema(formId)._schema
   doc = AutoForm.getFormValues(formId)["insertDoc"]
-  agileCrmContact = {}
-
+  agileCrmContact = AutoForm.findAttributesWithPrefix("agile")
   for key, value of doc
     agileField = schema[key].agileCrmField
     agileCrmContact[agileField] = value
 
+  console.log agileCrmContact
   return agileCrmContact
 
 getResultObj = (handler)->
@@ -35,7 +35,8 @@ AutoForm.addFormType "update_agilecrm", {
   onSubmit: () ->
     @event.preventDefault()
     agileCrmContact = formToAgileContact(@formId)
-    _agile.update_contact(agileCrmContact getResultObj(@))
+    _agile.set_email(agileCrmContact.email)
+    _agile.update_contact(agileCrmContact, getResultObj(@))
 
   validateForm: validateForm
 }
@@ -50,9 +51,10 @@ AutoForm.addHooks(null,
       )
   onError: (formType, result) ->
     if formType == 'insert_agilecrm' || formType == 'update_agilecrm'
+      console.log result
       Session.set('agilecrm-form',
         type: 'error'
         formId: @formId
         result: result
       )
-  )
+)
