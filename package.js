@@ -1,6 +1,6 @@
 Package.describe({
     name: 'mellors:agilecrm',
-    version: '0.0.2',
+    version: '0.0.3',
     // Brief, one-line summary of the package.
     summary: 'Insert and update contacts to agilecrm with the help of simple-schema and autoform',
     // URL to the Git repository containing the source code for this package.
@@ -12,11 +12,13 @@ Package.describe({
 
 Package.onUse(function(api) {
     api.versionsFrom('1.2.1');
-    api.use(['ecmascript', "coffeescript", "check"]);
+    api.use(['ecmascript', 'templating', 'ui', 'blaze', 'coffeescript', 'check']);
     api.use("aldeed:autoform@5.0.0");
     api.addFiles('both/simpleschema.coffee');
     api.addFiles('client/api.coffee', 'client');
     api.addFiles('client/autoform/agilecrm.coffee', 'client');
+    api.addFiles('client/views/agileCrmMessage.html', 'client');
+    api.addFiles('client/views/agileCrmMessage.coffee', 'client');
 
     // Imply SS to make sure SimpleSchema object is available to app
     api.imply('aldeed:simple-schema@1.1.0');
@@ -28,3 +30,4 @@ Package.onTest(function(api) {
     api.use('tinytest');
     api.use('mellors:agilecrm');
 });
+

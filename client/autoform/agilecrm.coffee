@@ -39,3 +39,20 @@ AutoForm.addFormType "update_agilecrm", {
 
   validateForm: validateForm
 }
+
+AutoForm.addHooks(null,
+  onSuccess: (formType, result) ->
+    if formType == 'insert_agilecrm' || formType == 'update_agilecrm'
+      Session.set('agilecrm-form',
+        type: 'success'
+        formId: @formId
+        result: result
+      )
+  onError: (formType, result) ->
+    if formType == 'insert_agilecrm' || formType == 'update_agilecrm'
+      Session.set('agilecrm-form',
+        type: 'error'
+        formId: @formId
+        result: result
+      )
+  )

@@ -13,12 +13,12 @@ Declare your AgileCRM API Key in your settings
 ```
 {
   "public": {
-    "agileCrmApiKey": "YOUR_API_KEY"
+    "agileCrmApiKey": "h8a9325tfbasmr4tkpim61o1vq"
   }
 }
 ```
 
-Then define your schema for the contact form. For every field you must add the correlating field name in AgileCRM.
+First define a schema for the contact form and declare a agileCrmField for every field.
 
 ```
 @mySchema = new SimpleSchema
@@ -28,10 +28,11 @@ Then define your schema for the contact form. For every field you must add the c
     agileCrmField: "email"
 ```
    
-Now you can add an autoform which uses the schema. Using the form types "insert_agilecrm" or "update_agilecrm" the form will push the values to AgileCRM.
+Now you can use the schema with autoform. By using the the type "insert_agilecrm" or "update_agilecrm" 
 
 ```
 <template name="hello">
     {{> quickForm schema="mySchema" id="newAgileCrmContact" type="insert_agilecrm"}}
 </template>
+{{> agileCrmMessage formId="newAgileCrmContact" successMessage="Thank you" errorMessage="That did not work :("}}
 ```
