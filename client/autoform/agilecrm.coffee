@@ -1,7 +1,7 @@
 global = @
 
 validateForm = ->
-  return AutoForm._validateFormDoc(@formDoc, false, @form.id, global[@form.schema], @form)
+  return AutoForm._validateFormDoc(@formDocs["insertDoc"], false, @form.id, global[@form.schema], @form)
 
 formToAgileContact = (formId) ->
 
